@@ -1,6 +1,19 @@
-import '@/styles/globals.css'
+import { ApolloProvider } from "@apollo/react-hooks";
 import type { AppProps } from 'next/app'
+import client from "@/lib/storyblok";
+import Layout from '../components/Layout'
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import "../styles/globals.css";
+
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ApolloProvider client={client}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ApolloProvider>
+  );
 }
+
+export default MyApp;
