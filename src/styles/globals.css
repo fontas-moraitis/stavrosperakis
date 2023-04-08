@@ -6,9 +6,11 @@
 	@font-face {
 		font-family: 'Raleway';
 		src: url('../../public/fonts/Raleway-VariableFont_wght.ttf') format('TrueType');
+		font-display: swap;
 	}
 
-  html {
-    font-family: 'Raleway', system-ui, sans-serif;;
-  }
+	html {
+		@apply antialiased;
+		font-family: 'Raleway', system-ui, sans-serif;
+	}
 }
