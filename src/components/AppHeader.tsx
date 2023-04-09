@@ -1,4 +1,4 @@
-import { useLayoutEffect, useEffect } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 import gsap from "gsap";
@@ -25,11 +25,12 @@ const AppHeader: React.FC = () => {
   if (error) return <p>Error, header data could not be fetched.</p>;
 
   return (
-    <header data-animation="header" className="flex justify-between p-5 h-[60px] text-neutral-800 bg-transparent fixed z-50 w-screen">
+    <header data-animation="header" className="text-center sm:flex sm:gap-0 justify-between p-5 h-[80px] text-neutral-800 bg-transparent fixed z-50 w-screen">
       {loading && (<p />)}
       {data && (
         <>
-          <Link href="/" className="font-semibold">STAVROS PERAKIS</Link><nav className="flex gap-3">
+          <Link href="/" className="font-semibold">STAVROS PERAKIS</Link>
+          <nav className="flex justify-between gap-4 mt-4 sm:mt-0 overflow-x-scroll no-scrollbar">
             {data?.PageItems.items.map((item: { name: string; __typename: string; }) => {
               if (item.name !== 'Home') {
                 return (
@@ -39,7 +40,7 @@ const AppHeader: React.FC = () => {
                 );
               }
             })}
-            <Link href='/store' key='store' className="hover:text-yellow-700">Store</Link>
+            <Link href='/Store' key='store' className="hover:text-yellow-700">Store</Link>
           </nav>
         </>
       )}
