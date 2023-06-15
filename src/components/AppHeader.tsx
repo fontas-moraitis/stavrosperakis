@@ -1,50 +1,51 @@
+'use client';
+
 import { useEffect } from "react";
 import Link from "next/link";
-import { gql, useQuery } from "@apollo/client";
 import gsap from "gsap";
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 
-const NAV_ITEMS = gql`
- query {
-   PageItems {
-     items {
-       name 
-      } 
-    } 
-  }
-`;
+const NAV_ITEMS = [
+  { label: 'Workshops', value: 'Workshops' },
+  { label: 'Collection', value: 'Collection' },
+  { label: 'About', value: 'About' },
+  { label: 'Store', value: 'Store' },
+]
 
 const AppHeader: React.FC = () => {
-  const { loading, error, data } = useQuery(NAV_ITEMS);
-  const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
-    gsap.fromTo("[data-animation='header']", { top: -200 }, { top: 0, duration: 1.5 });
+    gsap.fromTo("[data-animation='header']", { top: -80, opacity: 0 }, { top: 0, opacity: 1, duration: 1.6, immediateRender: true });
   }, []);
 
-  if (error) return <p>Error, header data could not be fetched.</p>;
-
   return (
-    <header data-animation="header" className="text-center sm:flex sm:gap-0 justify-between p-5 h-[80px] text-neutral-800 bg-transparent fixed z-50 w-screen">
-      {loading && (<p />)}
-      {data && (
+    <header
+      data-animation="header"
+      className={`text-lg text-center px-5 py-5 sm:flex sm:gap-0 justify-between sm:px-9 h-[80px] ${pathname === '/' ? 'text-neutral-50' : 'text-neutral-800'} bg-transparent fixed z-50 w-screen`}
+    >
+      {(
         <>
           <Link href="/" className="font-semibold">STAVROS PERAKIS</Link>
           <nav className="flex justify-between gap-4 mt-4 sm:mt-0 overflow-x-scroll no-scrollbar">
-            {data?.PageItems.items.map((item: { name: string; __typename: string; }) => {
-              if (item.name !== 'Home') {
+            {
+              NAV_ITEMS.map((item: { label: string; value: string; }) => {
                 return (
-                  <Link href={`/${item.name}`} key={item.name} className={`hover:text-yellow-700 ${router.pathname == `${item.name}` ? 'text-yellow-700' : 'text-slate-900'}`}>
-                    {item.name}
+                  <Link
+                    href={`/${item.value}`}
+                    key={item.value}
+                    className={`transition-colors duration-300 ease-in-out hover:text-yellow-700 ${pathname == '/' + item.value ? 'text-yellow-700' : ''}`}
+                  >
+                    {item.label}
                   </Link>
                 );
-              }
-            })}
-            <Link href='/Store' key='store' className="hover:text-yellow-700">Store</Link>
+              })
+            }
           </nav>
         </>
-      )}
-    </header>
+      )
+      }
+    </header >
   );
 };
 
