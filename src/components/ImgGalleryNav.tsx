@@ -9,6 +9,7 @@ const ImgGalleryNav = ({ numberOfItems, setCurrentIndex, currentIndex }: { numbe
         circles.map((circle) => (
           <button
             key={circle}
+            aria-label='Image navigation'
             className={`animate-[slideUp_3s_ease-in-out] rounded-full border transition-colors duration-300 ease-in border-neutral-100 w-3 h-3 hover:bg-neutral-100 ${circle === currentIndex ? 'bg-neutral-100' : 'bg-transparent'}`}
             onClick={() => setCurrentIndex(circle)}
           />

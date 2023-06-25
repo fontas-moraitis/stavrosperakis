@@ -10,7 +10,7 @@ export const metadata = {
   viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
   themeColor: '#a3a3a3',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/sum.png',
   }
 };
 

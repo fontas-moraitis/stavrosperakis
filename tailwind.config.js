@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'mono': ['Raleway', 'sans-serif'],
+        'sans': "var(--main-font)",
       },
       keyframes: {
         slideDown: {

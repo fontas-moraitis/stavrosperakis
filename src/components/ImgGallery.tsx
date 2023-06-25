@@ -46,16 +46,16 @@ const ImgGallery: React.FC<ImgGalleryProps> = ({ images }) => {
               style={{
                 objectPosition: 'top center',
                 objectFit: 'cover',
-                filter: 'brightness(.70)',
+                filter: 'brightness(.75)',
               }}
-              className="brightness-70 animate-[scaleUp_20s_ease-in_infinite] pointer-events-none"
+              className="animate-[scaleUp_20s_ease-in_infinite] pointer-events-none"
             />
             <div
               data-animation="img-gallery-text"
               className='absolute bottom-[15%] w-full flex flex-col items-center text-slate-100 text-center'
             >
-              <p className='animate-[slideUp_2s_ease-in-out] text-4xl mb-3 capitalize w-[80%]'>{image.alt}</p>
-              <p className='animate-[slideUp_3s_ease-in-out] text-sm w-[75%] whitespace-wrap'>{image.subtitle}</p>
+              <p className='animate-[slideUp_1.4s_ease-in-out] text-4xl mb-3 capitalize w-[80%]'>{image.alt}</p>
+              <p className='animate-[slideUp_2s_ease-in-out] text-sm w-[75%] whitespace-wrap'>{image.subtitle}</p>
             </div>
           </div>
         ))
