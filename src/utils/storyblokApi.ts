@@ -8,6 +8,7 @@ const callStoryblok = async (query: any) => {
       "Token": process.env.storyblokAccessToken!,
     },
     body: JSON.stringify({ query }),
+    next: { revalidate: 20 },
   };
 
   try {

@@ -13,10 +13,10 @@ const Workshops = async () => {
   const { data } = await callStoryblok(query);
 
   return (
-    <>
-      <div>{data?.PageItem.content.body[0].title}</div>
+    <div className="mt-[120px]">
+      <div>{data?.PageItem.content.body[0].title}</div >
       <div>{data?.PageItem.content.body[0].description}</div>
-    </>
+    </div>
   )
 };
 

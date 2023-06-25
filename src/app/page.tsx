@@ -1,5 +1,5 @@
-import ImgGallery from '@/components/ImgGallery';
 import callStoryblok from 'src/utils/storyblokApi';
+import { ImgGallery } from '@/components/index.js';
 
 type HomeContentImage = { _uid: string; image: string; title: string, subTitle: string };
 
@@ -8,7 +8,7 @@ export const metadata = {
   description: 'Stavros Perakis is a pottery sculptor based in Athens. Explore his stunning work and get in touch for commissions or purchases.',
   keywords: 'pottery, sculpture, art, artist, Athens, Greece, Stavros Perakis',
   viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
-  themeColor: '#e6e6e6ff',
+  themeColor: '#a3a3a3',
   icons: {
     icon: '/favicon.ico',
   }
@@ -36,13 +36,16 @@ const Home = async () => {
   const homeContent = await fetchHomeContent();
 
   return (
-    <main>
-      <ImgGallery
-        images={
-          homeContent?.map((item: HomeContentImage) => ({ id: item._uid, src: `https:${item.image}`, alt: item.title, subtitle: item.subTitle }))
-        }
-      />
-    </main>
+    <ImgGallery
+      images={
+        homeContent?.map((item: HomeContentImage) => ({
+          id: item._uid,
+          src: `https:${item.image}`,
+          alt: item.title,
+          subtitle: item.subTitle,
+        }))
+      }
+    />
   )
 };
 
