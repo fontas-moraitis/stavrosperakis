@@ -1,51 +1,38 @@
-import { useEffect } from "react";
-import Link from "next/link";
-import { gql, useQuery } from "@apollo/client";
-import gsap from "gsap";
-import { useRouter } from 'next/router';
+'use client';
 
-const NAV_ITEMS = gql`
- query {
-   PageItems {
-     items {
-       name 
-      } 
-    } 
-  }
-`;
+import Link from "next/link";
+import { usePathname } from 'next/navigation';
+
+const NAV_ITEMS = [
+  { label: 'Workshops', value: 'workshops' },
+  { label: 'Collection', value: 'collection' },
+  { label: 'About', value: 'about' },
+  { label: 'Store', value: 'store' },
+]
 
 const AppHeader: React.FC = () => {
-  const { loading, error, data } = useQuery(NAV_ITEMS);
-  const router = useRouter();
-
-  useEffect(() => {
-    gsap.fromTo("[data-animation='header']", { top: -200 }, { top: 0, duration: 1.5 });
-  }, []);
-
-  if (error) return <p>Error, header data could not be fetched.</p>;
+  const pathname = usePathname();
 
   return (
-    <header data-animation="header" className="text-center sm:flex sm:gap-0 justify-between p-5 h-[80px] text-neutral-800 bg-transparent fixed z-50 w-screen">
-      {loading && (<p />)}
-      {data && (
-        <>
-          <Link href="/" className="font-semibold">STAVROS PERAKIS</Link>
-          <nav className="flex justify-between gap-4 mt-4 sm:mt-0 overflow-x-scroll no-scrollbar">
-            {data?.PageItems.items.map((item: { name: string; __typename: string; }) => {
-              if (item.name !== 'Home') {
-                return (
-                  <Link href={`/${item.name}`} key={item.name} className={`hover:text-yellow-700 ${router.pathname == `${item.name}` ? 'text-yellow-700' : 'text-slate-900'}`}>
-                    {item.name}
-                  </Link>
-                );
-              }
-            })}
-            <Link href='/Store' key='store' className="hover:text-yellow-700">Store</Link>
-          </nav>
-        </>
-      )}
-    </header>
-  );
+    <header
+      className={`flex flex-col items-center justify-center gap-4 sm:gap-0 sm:flex-row sm:justify-between sm:px-6 py-4 ${pathname === '/' ? 'text-neutral-50' : 'text-neutral-800 backdrop-blur-sm'} bg-transparent fixed top-0 left-0 z-50 w-screen overflow-hidden`}
+    >
+      <Link href="/" className="animate-[slideDown_1.5s_ease-in-out] font-semibold p-1 rounded-md">STAVROS PERAKIS</Link>
+      <nav className="animate-[slideDown_2s_ease-in-out] flex gap-8 overflow-x-scroll no-scrollbar">
+        {
+          NAV_ITEMS.map((item: { label: string; value: string; }) => (
+            <Link
+              href={`/${item.value}`}
+              key={item.value}
+              className={`h-8 transition-colors duration-300 ease-in-out p-1 rounded-md focus:text-yellow-700 hover:text-yellow-700 ${pathname == '/' + item.value ? 'text-yellow-700' : ''}`}
+            >
+              {item.label}
+            </Link>
+          ))
+        }
+      </nav>
+    </header >
+  )
 };
 
 export default AppHeader;

@@ -24,4 +24,10 @@
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 	}
+
+	.active-image {
+		visibility: visible !important;
+		opacity: 1 !important;
+		transition: opacity 3000ms ease;
+	}
 }
