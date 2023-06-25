@@ -17,7 +17,7 @@ const AppHeader: React.FC = () => {
     <header
       className={`flex flex-col items-center justify-center gap-4 sm:gap-0 sm:flex-row sm:justify-between sm:px-6 py-4 ${pathname === '/' ? 'text-neutral-50' : 'text-neutral-800 backdrop-blur-sm'} bg-transparent fixed top-0 left-0 z-50 w-screen overflow-hidden`}
     >
-      <Link href="/" className="animate-[slideDown_1.5s_ease-in-out] font-semibold p-1 rounded-md">STAVROS PERAKIS</Link>
+      <Link href="/" className="animate-[slideDown_1.5s_ease-in-out] font-semibold text-lg tracking-widest p-1 rounded-md">STAVROS PERAKIS</Link>
       <nav className="animate-[slideDown_2s_ease-in-out] flex gap-8 overflow-x-scroll no-scrollbar">
         {
           NAV_ITEMS.map((item: { label: string; value: string; }) => (
