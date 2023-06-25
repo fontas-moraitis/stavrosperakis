@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { ImgGalleryNav } from '.';
 import useSwipe from 'src/hooks/useSwipe';
 
+
 type Image = { id: string; src: string; alt: string; subtitle: string };
 type ImgGalleryProps = { images: Array<Image> };
 
@@ -28,7 +29,7 @@ const ImgGallery: React.FC<ImgGalleryProps> = ({ images }) => {
   }, [currentIndex]);
 
   return (
-    <div className='h-screen w-screen bg-neutral-500'>
+    <div className='h-[100dvh] w-screen bg-neutral-500 overflow-hidden'>
       {
         images.map((image, index) => (
           <div
@@ -39,6 +40,7 @@ const ImgGallery: React.FC<ImgGalleryProps> = ({ images }) => {
               src={image.src}
               alt={image.alt}
               quality={100}
+              priority={true}
               fill
               draggable='false'
               style={{
