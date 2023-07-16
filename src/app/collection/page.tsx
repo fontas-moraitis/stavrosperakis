@@ -53,7 +53,7 @@ const Collection = async () => {
             return (
               <Link href={`/collection/${item.uid}`} key={item.uid} className='relative image-bg'>
                 <Image
-                  src={`https://${item.image}`}
+                  src={`https:${item.image}`}
                   alt={item.title}
                   width={320}
                   height={320}

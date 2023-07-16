@@ -58,7 +58,7 @@ const CollectionItem = ({ params }: { params: { itemId: string } }) => {
           return (
             <div key={idx} className="image-bg w-[200px] h-[200px] relative shrink-0">
               <Image
-                src={`https://${image.filename}`}
+                src={`https:${image.filename}`}
                 alt={image.name}
                 sizes='200px'
                 fill
@@ -72,7 +72,7 @@ const CollectionItem = ({ params }: { params: { itemId: string } }) => {
       </div>
       <div className='image-bg w-auto md:w-[620px] h-[620px] relative shrink-0'>
         {currentImage && <Image
-          src={`https://${currentImage}`}
+          src={`https:${currentImage}`}
           alt={''}
           sizes='620px'
           fill

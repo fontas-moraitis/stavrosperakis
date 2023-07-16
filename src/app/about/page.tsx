@@ -20,7 +20,7 @@ const About = async () => {
       <div className='flex flex-col md:flex-row gap-6 md:gap-10 mb-8'>
         <div className="relative image-bg w-[420px] h-[420px] shrink-0">
           <Image
-            src={`https://${image_stavros}`}
+            src={`https:${image_stavros}`}
             alt={title}
             sizes='420px 100vw'
             fill
@@ -40,7 +40,7 @@ const About = async () => {
         </div>
         <div className="relative image-bg w-[420px] h-[420px] shrink-0 order-1 md:order-2">
           <Image
-            src={`https://${image_studio}`}
+            src={`https:${image_studio}`}
             alt={title}
             fill
             priority
