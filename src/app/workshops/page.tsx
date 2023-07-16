@@ -21,7 +21,7 @@ const Workshops = async () => {
       <div className='grid gap- lg:grid-cols-2 grid-cols-1 grid-rows-2 min-h-screen w-[90%] md:w-[80%] xl:w-[70%]'>
         <div className='relative image-bg'>
           <Image
-            src={`https://${image}`}
+            src={`https:${image}`}
             alt='workshop with the artist'
             fill
             priority
