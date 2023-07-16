@@ -51,15 +51,16 @@ const Collection = async () => {
         {
           collectionItems.map((item: any, idx: number) => {
             return (
-              <Link href={`/collection/${item.uid}`} key={item.uid} className='relative image-bg'>
-                <Image
-                  src={`https:${item.image}`}
-                  alt={item.title}
-                  width={320}
-                  height={320}
-                  style={{ objectFit: 'cover' }}
-                  priority
-                />
+              <Link href={`/collection/${item.uid}`} key={item.uid} className='relative'>
+                <div className='relative image-bg w-[320px] h-[320px]'>
+                  <Image
+                    src={`https:${item.image}`}
+                    alt={item.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    priority
+                  />
+                </div>
                 <div className='flex items-center justify-between mt-1 sm:hidden'>
                   <p>{item.title.toUpperCase()}</p>
                   <p className="font-medium font-numeric">
