@@ -20,12 +20,12 @@ const Workshops = async () => {
       <h2 className='text-3xl md:text-5xl mx-4 md:col-span-2 text-center md:mb-8'>Workshops with the artist</h2>
       <div className='grid gap-8 lg:grid-cols-2 grid-cols-1 grid-rows-2 min-h-screen w-[90%] md:w-[80%] xl:w-[70%]'>
         <div className='relative image-bg'>
-          <Image
+          <img
             src={`https://${image}`}
             alt='workshop with the artist'
-            fill
-            sizes="480 100vw"
-            priority
+            // fill
+            // sizes="480 100vw"
+            // priority
             style={{ objectFit: 'cover' }}
           />
         </div>
