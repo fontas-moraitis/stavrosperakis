@@ -15,16 +15,16 @@ const AppHeader: React.FC = () => {
 
   return (
     <header
-      className={`flex flex-col items-center justify-center gap-4 sm:gap-0 sm:flex-row sm:justify-between sm:px-6 py-4 ${pathname === '/' ? 'text-neutral-50' : 'text-neutral-800 backdrop-blur-sm'} bg-transparent fixed top-0 left-0 z-50 w-screen overflow-hidden`}
+      className={`flex flex-col items-center justify-center gap-4 md:gap-0 md:flex-row md:justify-between md:px-6 py-4 ${pathname === '/' ? 'text-neutral-50' : 'text-neutral-800 backdrop-blur'} bg-transparent fixed top-0 left-0 z-50 w-screen overflow-hidden`}
     >
-      <Link href="/" className="animate-[slideDown_1.5s_ease-in-out] font-semibold text-lg tracking-widest p-1 rounded-md">STAVROS PERAKIS</Link>
-      <nav className="animate-[slideDown_2s_ease-in-out] flex gap-8 overflow-x-scroll no-scrollbar">
+      <Link href="/" className="animate-[slideDown_1.5s_ease-in-out] font-medium text-lg tracking-widest p-1 rounded-md whitespace-nowrap">STAVROS PERAKIS</Link>
+      <nav className="animate-[slideDown_2s_ease-in-out] flex gap-8 overflow-x-scroll no-scrollbar text-center">
         {
           NAV_ITEMS.map((item: { label: string; value: string; }) => (
             <Link
               href={`/${item.value}`}
               key={item.value}
-              className={`h-8 transition-colors duration-300 ease-in-out p-1 rounded-md focus:text-yellow-700 hover:text-yellow-700 ${pathname == '/' + item.value ? 'text-yellow-700' : ''}`}
+              className={`h-8 transition-colors duration-300 ease-in-out p-1 rounded-md font-normal focus:text-amber-700 hover:text-amber-400 ${pathname == '/' + item.value ? 'text-amber-700' : ''}`}
             >
               {item.label}
             </Link>

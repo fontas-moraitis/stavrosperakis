@@ -35,7 +35,8 @@ const ImgGallery: React.FC<ImgGalleryProps> = ({ images }) => {
           <div
             ref={(el) => (imageRefs.current[index] = el)}
             key={image.id}
-            className={`fixed w-screen h-screen overflow-hidden top-0 left-0 opacity-0 transition-opacity duration-200 ${index === currentIndex ? 'active-image' : ''}`}>
+            className={`fixed w-screen h-screen overflow-hidden top-0 left-0 opacity-0 transition-opacity duration-200 ${index === currentIndex ? 'active-image' : ''}`}
+          >
             <Image
               src={image.src}
               alt={image.alt}
@@ -46,7 +47,7 @@ const ImgGallery: React.FC<ImgGalleryProps> = ({ images }) => {
               style={{
                 objectPosition: 'top center',
                 objectFit: 'cover',
-                filter: 'brightness(.75)',
+                filter: 'brightness(.65)',
               }}
               className="animate-[scaleUp_20s_ease-in_infinite] pointer-events-none"
             />

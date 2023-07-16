@@ -1,11 +1,10 @@
-const callStoryblok = async (query: any) => {
-  const fetchUrl = `https://gapi.storyblok.com/v1/api`;
+const getPageData = async (query: any) => {
+  const fetchUrl = `http://localhost:3000/api/pageData`;
 
   const fetchOptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Token": process.env.storyblokPublic!,
     },
     body: JSON.stringify({ query }),
     next: { revalidate: 20 },
@@ -17,8 +16,8 @@ const callStoryblok = async (query: any) => {
     );
     return data;
   } catch (error) {
-    throw new Error("Could not fetch data from Storyblok!");
+    throw new Error("Could not fetch data!");
   }
 };
 
-export default callStoryblok;
+export default getPageData;

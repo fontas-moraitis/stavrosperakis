@@ -8,8 +8,8 @@ const nextConfig = {
     domains: ['a.storyblok.com'],
   },
   env: {
-    storyblokAccessToken: 'V0xwB0q7VQvBe1IPBmmDyQtt'
-  }
+    storyblokPublic: 'P1IbngfFMslqaxxfvne0IAtt'
+  },
 }
 
 module.exports = nextConfig

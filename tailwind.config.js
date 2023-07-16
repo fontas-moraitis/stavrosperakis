@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': "var(--main-font)",
+        'numeric': ['Helvetica', 'Arial', 'system-ui']
       },
       keyframes: {
         slideDown: {
