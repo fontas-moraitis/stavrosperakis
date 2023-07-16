@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import { NextFetchEvent, NextRequest } from 'next/server';
 
-export const config = {
-  runtime: 'edge',
-};
+export const runtime = 'edge';
 
 const ALLOWED_ORIGINS = ['http://localhost:3000/api/pageData', 'https://www.stavrosperakis.com/api/pageData'];
 const fetchUrl = `https://gapi.storyblok.com/v1/api`;
