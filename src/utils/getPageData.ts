@@ -1,5 +1,8 @@
 const getPageData = async (query: any) => {
-  let baseUrl = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000'
+  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV)
+  let baseUrl = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' || process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' ?
+   `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000';
+   
   const fetchUrl = `${baseUrl}/api/pageData`;
 
   const fetchOptions = {
