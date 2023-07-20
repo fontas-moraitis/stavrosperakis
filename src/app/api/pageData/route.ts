@@ -1,5 +1,4 @@
-import { NextResponse } from 'next/server';
-import { NextFetchEvent, NextRequest } from 'next/server';
+import { NextResponse, NextFetchEvent, NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
