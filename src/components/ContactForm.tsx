@@ -6,19 +6,20 @@ type ContactFormProps = {
   setShowingForm: Dispatch<SetStateAction<boolean>>
 };
 
-type Form = {
-  name: string;
-  email: string;
-  message: string;
-};
-
+type FormKeys = 'name' | 'email' | 'message';
 type ValidationField = { isValid: (value: string) => boolean, message: string };
 
-type Validation =  {
-  name: ValidationField[];
-  email: ValidationField[];
-  message: ValidationField[];
+type Form = {
+  [key in FormKeys]: string;
 };
+
+type Validation =  {
+  [key in FormKeys]: ValidationField[]
+};
+
+type ErrorFields = {
+  [key in FormKeys]: { isValid: boolean; message: string; }[]
+} | Record<any, any>;
 
 const INITIAL_STATE: Form = {
   name: '',
@@ -59,7 +60,7 @@ const VALIDATION: Validation = {
   ],
 };
 
-const getErrorFields = (form: Form) =>
+const getErrorFields = (form: Form): ErrorFields =>
   Object.keys(form).reduce((acc, key) => {
     if (!VALIDATION[key as keyof Validation]) return acc;
 
@@ -82,7 +83,7 @@ const getErrorField = (inputId: keyof Form, inputValue: any) => {
 
 const ContactForm: React.FC<ContactFormProps> = ({ setShowingForm }) => {
   const [form, setForm] = useState<Form>(INITIAL_STATE);
-  const [errorFields, setErrorFields] =  useState<Validation | {}>({});
+  const [errorFields, setErrorFields] =  useState<ErrorFields>({});
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({
@@ -91,8 +92,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ setShowingForm }) => {
     });
   };
 
-  const handleBlur = (event: any) => {
-    setErrorFields(() => getErrorField(event.target.id, event.target.value))
+  const handleBlur = (event: React.FocusEvent<HTMLElement>) => {
+    setErrorFields(() => getErrorField(event.target.id as FormKeys, event.target.value))
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLElement>) => {
@@ -122,7 +123,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setShowingForm }) => {
         />
         {errorFields?.name?.length ? (
           <span className='text-red-700 text-xs'>
-            {errorFields?.name[0].message}
+            {errorFields.name[0].message}
           </span>
         ) : null}
       </label>
@@ -138,7 +139,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setShowingForm }) => {
         />
         {errorFields?.email?.length ? (
           <span className='text-red-700 text-xs'>
-            {errorFields?.email[0].message}
+            {errorFields.email[0].message}
           </span>
         ) : null}
       </label>
@@ -155,7 +156,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setShowingForm }) => {
         />
         {errorFields?.message?.length ? (
           <span className='text-red-700 text-xs'>
-            {errorFields?.message[0].message}
+            {errorFields.message[0].message}
           </span>
         ) : null}
       </label>
