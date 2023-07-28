@@ -92,7 +92,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setShowingForm }) => {
     });
   };
 
-  const handleBlur = (event: React.FocusEvent<HTMLElement>) => {
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setErrorFields(() => getErrorField(event.target.id as FormKeys, event.target.value))
   }
 
