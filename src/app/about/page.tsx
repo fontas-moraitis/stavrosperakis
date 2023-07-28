@@ -11,6 +11,18 @@ const query = `
     }
   }
 `
+
+export const metadata = {
+  title: 'Stavros Perakis | Pottery Sculptor in Athens',
+  description: 'Stavros Perakis is a pottery sculptor based in Athens. Explore his stunning work and get in touch for commissions or purchases.',
+  keywords: 'pottery, sculpture, art, artist, Athens, Greece, Stavros Perakis',
+  viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
+  themeColor: '#f5f5f5',
+  icons: {
+    icon: '/sum.png',
+  }
+};
+
 const About = async () => {
   const { data } = await callStoryblok(query);
   let { title, studio, bio, aboutStudio, image_studio, image_stavros } = data?.PageItem?.content.body[0];
@@ -19,8 +31,8 @@ const About = async () => {
     <>
     <div className="mt-[120px] md:mx-auto mb-6 flex flex-col items-center gap-4">
       <h2 className='text-3xl md:text-5xl mx-4 md:col-span-2 text-center mb-4 md:mb-8'>About the artist</h2>
-      <div className='flex flex-col md:flex-row gap-6 md:gap-10 mb-8'>
-        <div className="relative image-bg w-[420px] h-[420px] shrink-0">
+      <div className='flex flex-col md:flex-row gap-6 md:gap-10 mb-8 lg:h-[50vh] lg:w-[80vw] items-center justify-center'>
+        <div className="relative image-bg w-[420px] h-[420px] lg:h-[50vh] shrink-0">
           <Image
             src={`https:${image_stavros}`}
             alt={title}
@@ -35,15 +47,16 @@ const About = async () => {
           <p>{bio}</p>
         </div>
       </div>
-      <div className='flex flex-col md:flex-row gap-6 md:gap-10 text-left md:text-right'>
+      <div className='flex flex-col md:flex-row gap-6 md:gap-10 text-left md:text-right lg:h-[60vh] lg:w-[80vw] items-center justify-center'>
         <div className='max-w-sm flex flex-col justify-center md:gap-4 text-neutral-900 order-2 md:order-1'>
           <p className='text-2xl font-semibold mb-2 md:mb-0'>{studio}</p>
           <p>{aboutStudio}</p>
         </div>
-        <div className="relative image-bg w-[420px] h-[420px] shrink-0 order-1 md:order-2">
+        <div className="relative image-bg w-[420px] h-[420px] lg:h-[50vh] shrink-0 order-1 md:order-2">
           <Image
             src={`https:${image_studio}`}
             alt={title}
+            sizes='420px 100vw'
             fill
             priority
             style={{ objectFit: 'cover' }}

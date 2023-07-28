@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en" className={`${raleway.variable}`}>
       <body>
         <AppHeader />
-        <main className='grid min-h-screen'>{children}</main>
+        <main className='grid min-h-[100dvh]'>{children}</main>
       </body>
     </html>
   );
