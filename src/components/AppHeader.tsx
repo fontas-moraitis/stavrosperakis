@@ -26,7 +26,7 @@ const AppHeader: React.FC = () => {
               key={item.value}
               className={`h-8 transition-colors duration-300 ease-in-out p-1 rounded-md font-normal focus:text-amber-700 hover:text-amber-400 ${pathname == '/' + item.value ? 'text-amber-700' : ''}`}
             >
-              {item.label}
+              {item.label === 'Store' ? 'Cart' : item.label}
             </Link>
           ))
         }

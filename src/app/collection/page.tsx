@@ -56,6 +56,7 @@ const Collection = async () => {
                   <Image
                     src={`https:${item.image}`}
                     alt={item.title}
+                    sizes='320px'
                     fill
                     style={{ objectFit: 'cover' }}
                     priority

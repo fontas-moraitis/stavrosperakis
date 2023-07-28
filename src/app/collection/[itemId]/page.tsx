@@ -19,12 +19,14 @@ const Item = ({ params }: { params: { itemId: string } }) => {
   const [loading, setLoading] = useState(true);
   const [collectionItem, setCollectionItem] = useState<CollectionItem>();
   const [currentImage, setCurrentImage] = useState<string>();
+  const [isItemInCart, setIsItemInCart] = useState(false);
 
   const handleAddToCart = (item: CollectionItem) => {
     const currentStore = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')!) : [];
 
     const payload = [...currentStore, item];
     sessionStorage.setItem('cart', JSON.stringify(payload));
+    setIsItemInCart(true);
   }
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const Item = ({ params }: { params: { itemId: string } }) => {
         sessionStorage.setItem('collectionItems', JSON.stringify(data.PageItem.content.body));
         setCollectionItem(data.PageItem.content.body.find((item: any) => item._uid === params.itemId));
       } catch(error) {
-        console.error('error from item', error)
+        console.error('error from item', error);
       } finally {
         setLoading(false);
       }
@@ -43,7 +45,7 @@ const Item = ({ params }: { params: { itemId: string } }) => {
     if (sessionStorage.getItem('collectionItems')) {
       let items = JSON.parse(sessionStorage.getItem('collectionItems')!);
       setCollectionItem(items.find((item: CollectionItem) => item._uid === params.itemId));
-      setLoading(false)
+      setLoading(false);
     } else {
       fetchData();
     }
@@ -52,6 +54,13 @@ const Item = ({ params }: { params: { itemId: string } }) => {
   useEffect(() => {
     setCurrentImage(collectionItem?.additionalImages[0]?.filename)
   }, [collectionItem]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('cart')) {
+      let itemExists = JSON.parse(sessionStorage.getItem('cart')!).find((item: CollectionItem) => item._uid === collectionItem?._uid);
+      setIsItemInCart(itemExists);
+    }
+  }, [collectionItem?._uid])
 
   if (loading) {
     return <div className="w-screen h-screen flex items-center justify-center">loading...</div>
@@ -107,10 +116,11 @@ const Item = ({ params }: { params: { itemId: string } }) => {
             <span className="italic ml-2 text-sm">(per item)</span>
           </p>
           <button
-            className="hover:bg-neutral-100 hover:text-neutral-900 border-neutral-700 mt-6 sm:mt-10 border-2 p-2 align-self-end bg-neutral-900 text-neutral-50 active:scale-95"
+            className="hover:bg-neutral-100 hover:text-neutral-900 border-neutral-700 mt-6 sm:mt-10 border-2 p-2 align-self-end bg-neutral-900 text-neutral-50 active:scale-95 disabled:bg-neutral-400 disabled:border-neutral-400 disabled:pointer-events-none"
             onClick={() => handleAddToCart(collectionItem!)}
+            disabled={isItemInCart}
           >
-            Add to cart
+            {isItemInCart ? 'Item already in cart' : 'Add to cart'}
           </button>
         </div>
       </div>
