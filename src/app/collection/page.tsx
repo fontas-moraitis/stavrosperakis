@@ -47,7 +47,7 @@ const Collection = async () => {
       <h2 className='text-3xl md:text-5xl mx-4 text-center mb-10 md:mb-20'>
         A journey in form
       </h2>
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 grid-cols-1">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
         {
           collectionItems.map((item: any, idx: number) => {
             return (

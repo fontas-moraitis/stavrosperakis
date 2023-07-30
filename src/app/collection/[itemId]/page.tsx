@@ -67,8 +67,8 @@ const Item = ({ params }: { params: { itemId: string } }) => {
   }
 
   return (
-    <div className="mt-[120px] flex flex-col md:flex-row gap-1 lg:justify-center mb-6">
-      <div className="flex flex-row md:flex-col w-screen md:w-auto md:h-[620px] overflow-x-scroll no-scrollbar gap-1 cursor-pointer md:justify-between shrink-0">
+    <div className="mt-[120px] flex flex-col lg:flex-row md:items-center gap-1 lg:justify-center mb-6">
+      <div className="flex flex-row lg:flex-col w-screen md:w-auto lg:h-[620px] overflow-x-scroll no-scrollbar gap-1 cursor-pointer lg:justify-between shrink-0">
         {collectionItem?.additionalImages.map((image) => {
           return (
             <div key={image.filename} className="image-bg w-[200px] h-[200px] relative shrink-0">
@@ -88,14 +88,14 @@ const Item = ({ params }: { params: { itemId: string } }) => {
       <div className='image-bg w-auto h-[420px] md:w-[620px] sm:h-[620px] relative shrink-0'>
         {currentImage && <Image
           src={`https:${currentImage}`}
-          alt={''}
+          alt=''
           sizes='620px 100vw'
           fill
           style={{ objectFit: 'cover', backgroundPosition: 'center center' }}
           priority
         />}
       </div>
-      <div className="sm:max-w-xs px-4 mt-4 lg:mt-0 lg:ml-4 flex flex-col gap-4 justify-center lg:px-0">
+      <div className="lg:max-w-xs px-4 mt-4 lg:mt-0 lg:ml-4 flex flex-col gap-4 justify-center lg:px-0">
         <p className="text-5xl sm:mb-4">{collectionItem?.prodTitle}</p>
         <p>{collectionItem?.prodDescription}</p>
         <div>
