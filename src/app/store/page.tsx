@@ -5,6 +5,7 @@ import Image from "next/image";
 import ContactForm from '@/components/ContactForm';
 import AppFooter from "@/components/AppFooter";
 import { CollectionItem } from "src/types";
+import msg from '../../locales/msg.json';
 
 const Store: React.FC = () => {
   const [cart, setCart] = useState([]);
@@ -26,10 +27,11 @@ const Store: React.FC = () => {
   return (
     <>
     <div className="mt-[120px] md:mx-auto flex flex-col items-center mb-[10%]">
-      <h2 className='text-3xl md:text-5xl mx-4 text-center mb-6'>Cart</h2>
+      <h2 className='text-3xl md:text-5xl mx-4 text-center mb-6'>
+        { msg.cart.title }
+      </h2>
       <p className='max-w-lg px-2 text-center mb-10 text-sm text-neutral-800'>
-        Availabiliy of items can not be guranteed, please check the list bellow and when
-        ready contact the artist with your details.
+        { msg.cart.subTitle }
       </p>
       {
         cart.length ? 
@@ -41,7 +43,7 @@ const Store: React.FC = () => {
                  src={`https:${item?.additionalImages[0]?.filename}`}
                  sizes='60px'
                  fill
-                 alt={item?.prodTitle}
+                 alt={`img - ${item?.prodTitle.toLowerCase()}`}
                  priority
                 />
               </div>
@@ -52,6 +54,8 @@ const Store: React.FC = () => {
                 </span>
                 <button
                   className="ml-6 hover:fill-red-700 hover:text-red-700 align-middle"
+                  title={msg.buttons.removeItem}
+                  aria-label={msg.buttons.removeItem}
                   onClick={() => handleRemoveItem(item._uid)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
@@ -62,16 +66,19 @@ const Store: React.FC = () => {
             </div>
           )
         }) :
-        <div>your cart is empty</div>
+        <div>
+          { msg.cart.emptyCart }
+        </div>
       }
       <button 
-        className="w-full mt-auto sm:w-fit sm:mt-10 border-2 border-neutral-900 px-4 py-4 bg-neutral-900 text-neutral-50 hover:bg-neutral-50 hover:text-neutral-900 active:scale-95 disabled:bg-neutral-400 disabled:border-neutral-400 disabled:pointer-events-none"
+        className="mt-auto sm:w-fit sm:mt-10 border-2 border-neutral-900 px-4 py-4 bg-neutral-900 text-neutral-50 hover:bg-neutral-50 hover:text-neutral-900 active:scale-95 disabled:bg-neutral-400 disabled:border-neutral-400 disabled:pointer-events-none"
         disabled={!cart.length}
+        aria-label={msg.buttons.contactWithQuery}
         onClick={() => setShowingForm(true)}
       >
-        Contact artist with query
+        { msg.buttons.contactWithQuery }
       </button>
-      { showingForm && <ContactForm setShowingForm={setShowingForm} /> }
+      { showingForm && <ContactForm setShowingForm={setShowingForm} items={cart} /> }
     </div>
     <AppFooter />
     </>

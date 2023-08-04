@@ -1,11 +1,12 @@
 import callStoryblok from 'src/utils/storyblokApi';
 import { ImgGallery } from '@/components/index.js';
+import msg from '../locales/msg.json';
 
 type HomeContentImage = { _uid: string; image: string; title: string, subTitle: string };
 
 export const metadata = {
-  title: 'Stavros Perakis | Pottery Sculptor in Athens',
-  description: 'Stavros Perakis is a pottery sculptor based in Athens. Explore his stunning work and get in touch for commissions or purchases.',
+  title: msg.metadata.title,
+  description: msg.metadata.description, 
   keywords: 'pottery, sculpture, art, artist, Athens, Greece, Stavros Perakis',
   viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
   themeColor: '#a3a3a3',
