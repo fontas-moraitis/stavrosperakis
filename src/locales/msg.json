@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "title": "Stavros Perakis | Pottery Sculptor in Athens",
+    "description": "Stavros Perakis is a pottery sculptor based in Athens. Explore his stunning work and get in touch for commissions or purchases.",
+    "descriptionCollection": "A collection of pottery and sculptures, handmade by Stavros Perakis",
+    "descriptionAbout": "Stavros Perakis is a pottery sculptor based in Athens. Explore his stunning work and get in touch for commissions or purchases.",
+    "descriptionWorkshops": "Book a spot in our workshops with Stavros Perakis and immerse yourself in the art of the wheel"
+  },
+  "buttons": {
+    "cancel": "Cancel",
+    "sendEmail": "Send email",
+    "contactWithQuery": "Contact artist with query",
+    "removeItem": "Remove item from cart",
+    "workshopContact": "Call to make an appointment"
+  },
+  "validation": {
+    "required": "Field is required",
+    "maxLength": "Maximum 35 characters",
+    "onlyAlpha": "Only alphanumeric characters"
+  },
+  "appHeader": {
+    "title": "Stavros Perakis",
+    "navigation": {
+      "workshops": "Workshops",
+      "store": "Cart",
+      "about": "About",
+      "collection": "Collection"
+    }
+  },
+  "appFooter": {
+    "insta": "Follow us on Instagram",
+    "copyright": "Copyright",
+    "rights": "stavrosperakis™. All rights reserved."
+  },
+  "contactForm": {
+    "title": "Send query",
+    "prefilledMsg": "Hello Stavros, i am interested in the following items:",
+    "name": "Name*",
+    "message": "Message"
+  },
+  "cart": {
+    "title": "Cart",
+    "subTitle": "Availabiliy of items can not be guranteed, please check the list bellow and when ready contact the artist with your details.",
+    "emptyCart": "Cart is empty"
+  },
+  "workshops": {
+    "title": "Workshops with the artist"
+  },
+  "collection": {
+    "title": "A journey in form"
+  },
+  "about": {
+    "title": "About the artist"
+  }
+}

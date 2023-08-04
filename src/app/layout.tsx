@@ -7,11 +7,7 @@ const raleway = Raleway({
   variable: '--main-font',
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${raleway.variable}`}>
       <body>

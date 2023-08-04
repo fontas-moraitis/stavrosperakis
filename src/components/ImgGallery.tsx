@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { ImgGalleryNav } from '.';
 import useSwipe from 'src/hooks/useSwipe';
 
-
 type Image = { id: string; src: string; alt: string; subtitle: string };
 type ImgGalleryProps = { images: Array<Image> };
 
@@ -39,7 +38,7 @@ const ImgGallery: React.FC<ImgGalleryProps> = ({ images }) => {
               src={image.src}
               alt={image.alt}
               quality={100}
-              priority={true}
+              priority
               fill
               draggable='false'
               style={{
@@ -50,11 +49,14 @@ const ImgGallery: React.FC<ImgGalleryProps> = ({ images }) => {
               className="animate-[scaleUp_20s_ease-in_infinite] pointer-events-none"
             />
             <div
-              data-animation="img-gallery-text"
-              className='absolute bottom-[15%] w-full flex flex-col items-center text-slate-100 text-center'
+              className='absolute bottom-[8%] sm:bottom-[15%] w-full flex flex-col items-center text-slate-100 text-center'
             >
-              <p className='animate-[slideUp_1.4s_1s_ease-in-out] text-4xl mb-3 capitalize w-[80%]'>{image.alt}</p>
-              <p className='animate-[slideUp_2s_1s_ease-in-out] text-sm w-[75%] whitespace-wrap'>{image.subtitle}</p>
+              <p className='animate-[slideUp_1.4s_ease-in-out] text-4xl mb-3 capitalize w-[80%]'>
+                { image.alt }
+              </p>
+              <p className='animate-[slideUp_2s_ease-in-out] text-sm w-[75%] whitespace-wrap'>
+                { image.subtitle }
+              </p>
             </div>
           </div>
         ))

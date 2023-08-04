@@ -1,3 +1,5 @@
+import msg from '../locales/msg.json';
+
 const AppFooter = () => {
   let year = new Date().getFullYear();
 
@@ -14,10 +16,14 @@ const AppFooter = () => {
             <circle cx="11.994" cy="11.979" r="3.003">
             </circle>
         </svg>
-        <span className="text-sm font-medium">Follow us on Instagram</span>
+      <span className="text-sm font-medium">
+        { msg.appFooter.insta }
+      </span>
       </a>
       <p className='text-xs text-neutral-600'>
-        Copyright <span className="font-numeric">© { year }</span> stavrosperakis™. All rights reserved.
+        { msg.appFooter.copyright } 
+        <span className="font-numeric mx-1">© { year }</span>
+        { msg.appFooter.rights } 
       </p>
     </div>
   )

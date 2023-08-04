@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import { CollectionItem } from 'src/types';
 import callStoryblok from "src/utils/storyblokApi";
+import msg from '../../locales/msg.json';
 
 const query = `
   query {
@@ -12,9 +13,10 @@ const query = `
     }
   }
 `
+
 export const metadata = {
-  title: 'Stavros Perakis | Pottery Sculptor in Athens',
-  description: 'A collection of pottery and sculptures, handmade by Stavros Perakis',
+  title: msg.metadata.title, 
+description: msg.metadata.descriptionCollection, 
   keywords: 'workshops, pottery, sculpture, art, artist, Athens, Greece, Stavros Perakis',
   viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
   themeColor: '#f5f5f5',
@@ -27,7 +29,7 @@ type ComposedItem = {
   uid: string,
   image: string,
   title: string,
-  price: string,
+  price: number,
 }
 
 const Collection = async () => {
@@ -45,11 +47,11 @@ const Collection = async () => {
   return (
     <div className="mt-[120px] md:mx-auto mb-6 flex flex-col items-center">
       <h2 className='text-3xl md:text-5xl mx-4 text-center mb-10 md:mb-20'>
-        A journey in form
+        { msg.collection.title }
       </h2>
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 grid-cols-1">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 grid-cols-1">
         {
-          collectionItems.map((item: any, idx: number) => {
+          collectionItems.map((item: ComposedItem, idx: number) => {
             return (
               <Link href={`/collection/${item.uid}`} key={item.uid} className='relative'>
                 <div className='relative image-bg w-[320px] h-[320px]'>
