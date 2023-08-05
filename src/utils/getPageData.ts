@@ -17,9 +17,9 @@ const getPageData = async (query: any) => {
     const data = await fetch(fetchUrl, fetchOptions).then((response) =>
       response.json(),
     );
+
     return data;
   } catch (error) {
-    console.log('getPageData', process.env.NEXT_PUBLIC_VERCEL_ENV);
     throw new Error("Could not fetch data!",);
   }
 };
