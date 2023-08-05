@@ -49,7 +49,7 @@ const ImgGallery: React.FC<ImgGalleryProps> = ({ images }) => {
               className="animate-[scaleUp_20s_ease-in_infinite] pointer-events-none"
             />
             <div
-              className='absolute bottom-[8%] sm:bottom-[15%] w-full flex flex-col items-center text-slate-100 text-center'
+              className='absolute bottom-[14%] w-full flex flex-col items-center text-white text-center'
             >
               <p className='animate-[slideUp_1.4s_ease-in-out] text-4xl mb-3 capitalize w-[80%]'>
                 { image.alt }

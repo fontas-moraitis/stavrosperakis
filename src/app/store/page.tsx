@@ -10,6 +10,7 @@ import msg from '../../locales/msg.json';
 const Store: React.FC = () => {
   const [cart, setCart] = useState([]);
   const [showingForm, setShowingForm] = useState(false);
+  const [queryMsg, setQueryMsg] = useState('');
 
   const handleRemoveItem = (itemId: string) => {
     const updatedCart = cart.filter((item: CollectionItem) => item._uid !== itemId);
@@ -24,9 +25,15 @@ const Store: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const composedMessage = cart.map((item: CollectionItem) => ` ${item.prodTitle.toUpperCase()},`);
+
+    setQueryMsg(`${msg.contactForm.prefilledMsg} ${composedMessage.join('')}`);
+  }, [cart]);
+
   return (
     <>
-    <div className="mt-[120px] md:mx-auto flex flex-col items-center mb-[10%]">
+    <div className="mt-[120px] md:mx-auto flex flex-col items-center mb-[10%] px-3">
       <h2 className='text-3xl md:text-5xl mx-4 text-center mb-6'>
         { msg.cart.title }
       </h2>
@@ -34,10 +41,10 @@ const Store: React.FC = () => {
         { msg.cart.subTitle }
       </p>
       {
-        cart.length ? 
+        cart.length && !showingForm ? 
         cart.map((item: CollectionItem) => {
           return (
-            <div key={item?._uid} className="flex items-center w-full px-6 gap-4 max-w-3xl odd:bg-neutral-200 py-4 overflow-hidden">
+            <div key={item?._uid} className="flex items-center w-full px-6 gap-4 max-w-3xl odd:bg-neutral-200 even:bg-neutral-50 py-4 overflow-hidden">
               <div className="image-bg w-[60px] h-[60px] relative shrink-0">
                 <Image
                  src={`https:${item?.additionalImages[0]?.filename}`}
@@ -70,17 +77,22 @@ const Store: React.FC = () => {
           { msg.cart.emptyCart }
         </div>
       }
-      <button 
-        className="mt-auto sm:w-fit sm:mt-10 border-2 border-neutral-900 px-4 py-4 bg-neutral-900 text-neutral-50 hover:bg-neutral-50 hover:text-neutral-900 active:scale-95 disabled:bg-neutral-400 disabled:border-neutral-400 disabled:pointer-events-none"
-        disabled={!cart.length}
-        aria-label={msg.buttons.contactWithQuery}
-        onClick={() => setShowingForm(true)}
-      >
-        { msg.buttons.contactWithQuery }
-      </button>
-      { showingForm && <ContactForm setShowingForm={setShowingForm} items={cart} /> }
+      <div className="mt-6 sm:mt-10 w-full flex items-center justify-end gap-4">
+        <button 
+          className="button-main"
+          disabled={!cart.length}
+          aria-label={msg.buttons.contactWithQuery}
+          onClick={() => setShowingForm(true)}
+        >
+          { msg.buttons.contactWithQuery }
+        </button>
+        <a href={`https://api.whatsapp.com/send?phone=+306977086072&text=${queryMsg}`} rel="noreferrer" target="_blank" className='button-whatsapp'>
+          {msg.buttons.whatsappArtist}
+        </a>
+      </div>
+      { showingForm && <ContactForm setShowingForm={setShowingForm} queryMsg={queryMsg} /> }
     </div>
-    <AppFooter />
+    {!showingForm && <AppFooter />}
     </>
   )
 };

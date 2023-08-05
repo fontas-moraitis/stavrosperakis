@@ -9,9 +9,13 @@
   "buttons": {
     "cancel": "Cancel",
     "sendEmail": "Send email",
-    "contactWithQuery": "Contact artist with query",
+    "contactWithQuery": "Email artist with query",
     "removeItem": "Remove item from cart",
-    "workshopContact": "Call to make an appointment"
+    "workshopContact": "Call to make an appointment",
+    "addToCart": "Add to cart",
+    "itemInCart": "Item added",
+    "backToCollection": "Back to collection",
+    "whatsappArtist": "Whatsapp artist"
   },
   "validation": {
     "required": "Field is required",
@@ -36,11 +40,11 @@
     "title": "Send query",
     "prefilledMsg": "Hello Stavros, i am interested in the following items:",
     "name": "Name*",
-    "message": "Message"
+    "message": "Message*"
   },
   "cart": {
     "title": "Cart",
-    "subTitle": "Availabiliy of items can not be guranteed, please check the list bellow and when ready contact the artist with your details.",
+    "subTitle": "Availabiliy of items can not be guranteed, please check the list bellow and when ready contact the artist with your query.",
     "emptyCart": "Cart is empty"
   },
   "workshops": {
@@ -48,6 +52,14 @@
   },
   "collection": {
     "title": "A journey in form"
+  },
+  "collectionItem": {
+    "loading": "Loading...",
+    "details": "Details",
+    "dimensions": "Dimensions:",
+    "weight": "Weight:",
+    "price": "Price:",
+    "perItem": "(per item)"
   },
   "about": {
     "title": "About the artist"
