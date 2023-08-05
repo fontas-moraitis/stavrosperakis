@@ -34,8 +34,8 @@ const About = async () => {
       <h2 className='text-3xl md:text-5xl mx-4 md:col-span-2 text-center mb-4 md:mb-8'>
         { msg.about.title }
       </h2>
-      <div className='flex flex-col md:flex-row gap-6 md:gap-10 mb-8 lg:h-[50vh] lg:w-[80vw] items-center justify-center'>
-        <div className="relative image-bg w-[420px] h-[420px] lg:h-[50vh] shrink-0">
+      <div className='flex flex-col md:flex-row gap-6 md:gap-10 mb-8 w-full px-3 sm:px-0 lg:h-[50vh] lg:w-[80vw] items-center justify-center'>
+        <div className="relative image-bg w-full sm:w-[420px] h-[420px] lg:h-[50vh] shrink-0">
           <Image
             src={`https:${image_stavros}`}
             alt={title}
@@ -45,17 +45,17 @@ const About = async () => {
             style={{ 'objectFit': 'cover' }}
           />
         </div>
-        <div className='max-w-sm flex flex-col justify-center md:gap-4 text-neutral-900'>
-          <p className='text-2xl font-semibold mb-2 md:mb-0'>{title}</p>
+        <div className='sm:max-w-sm flex flex-col justify-center gap-2 md:gap-4 text-neutral-900'>
+          <p className='text-2xl font-medium md:mb-0'>{title}</p>
           <p>{bio}</p>
         </div>
       </div>
-      <div className='flex flex-col md:flex-row gap-6 md:gap-10 text-left md:text-right lg:h-[60vh] lg:w-[80vw] items-center justify-center'>
-        <div className='max-w-sm flex flex-col justify-center md:gap-4 text-neutral-900 order-2 md:order-1'>
-          <p className='text-2xl font-semibold mb-2 md:mb-0'>{studio}</p>
+      <div className='flex flex-col md:flex-row gap-6 md:gap-10 w-full px-3 sm:px-0 text-left md:text-right lg:h-[60vh] lg:w-[80vw] items-center justify-center'>
+        <div className='sm:max-w-sm flex flex-col justify-center gap-2 md:gap-4 text-neutral-900 order-2 md:order-1'>
+          <p className='text-2xl font-medium md:mb-0'>{studio}</p>
           <p>{aboutStudio}</p>
         </div>
-        <div className="relative image-bg w-[420px] h-[420px] lg:h-[50vh] shrink-0 order-1 md:order-2">
+        <div className="relative image-bg w-full sm:w-[420px] h-[420px] lg:h-[50vh] shrink-0 order-1 md:order-2">
           <Image
             src={`https:${image_studio}`}
             alt={title}

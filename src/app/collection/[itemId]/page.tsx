@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { CollectionItem } from "src/types";
 import Image from 'next/image';
+import Link from 'next/link';
 import getPageData from "src/utils/getPageData";
+import msg from '../../../locales/msg.json';
 
 const query = `
   query {
@@ -34,8 +36,8 @@ const Item = ({ params }: { params: { itemId: string } }) => {
       try {
         const { data } = await getPageData(query);
         sessionStorage.setItem('collectionItems', JSON.stringify(data.PageItem.content.body));
-        setCollectionItem(data.PageItem.content.body.find((item: any) => item._uid === params.itemId));
-      } catch(error) {
+        setCollectionItem(data.PageItem.content.body.find((item: CollectionItem) => item._uid === params.itemId));
+      } catch (error) {
         console.error('error from item', error);
       } finally {
         setLoading(false);
@@ -63,7 +65,9 @@ const Item = ({ params }: { params: { itemId: string } }) => {
   }, [collectionItem?._uid])
 
   if (loading) {
-    return <div className="w-screen h-screen flex items-center justify-center">loading...</div>
+    return <div className="w-screen h-screen flex items-center justify-center">
+      {msg.collectionItem.loading}
+    </div>
   }
 
   return (
@@ -99,34 +103,43 @@ const Item = ({ params }: { params: { itemId: string } }) => {
         <p className="text-5xl sm:mb-4">{collectionItem?.prodTitle}</p>
         <p>{collectionItem?.prodDescription}</p>
         <div>
-          <p className="font-semibold text-lg mb-2">Details</p>
+          <p className="font-semibold text-lg mb-2">
+            {msg.collectionItem.details}
+          </p>
           <p>
-            Dimensions: 
+            {msg.collectionItem.dimensions}
             <span className="font-numeric ml-2">{collectionItem?.prodDimensions} cm</span>
           </p>
           <p>
-            Weight:
+            {msg.collectionItem.weight}
             <span className="font-numeric ml-2">{collectionItem?.prodWeight} kg</span>
           </p>
           <p>
-            <span className="mr-1">Price:</span>
+            <span className="mr-1">
+              {msg.collectionItem.price}
+            </span>
             <span className='font-numeric ml-2'>
               {collectionItem?.prodPrice && new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'EUR' }).format(Number(collectionItem?.prodPrice))}
             </span>
-            <span className="italic ml-2 text-sm">(per item)</span>
+            <span className="italic ml-2 text-sm">
+              {msg.collectionItem.perItem}
+            </span>
           </p>
           <button
-            className="hover:bg-neutral-100 hover:text-neutral-900 border-neutral-700 mt-6 sm:mt-10 border-2 p-2 align-self-end bg-neutral-900 text-neutral-50 active:scale-95 disabled:bg-neutral-400 disabled:border-neutral-400 disabled:pointer-events-none"
+            className="button-main mt-6 sm:mt-10 align-self-end"
             onClick={() => handleAddToCart(collectionItem!)}
+            aria-label={msg.buttons.addToCart}
             disabled={isItemInCart}
           >
-            {isItemInCart ? 'Item already in cart' : 'Add to cart'}
+            {isItemInCart ? msg.buttons.itemInCart : msg.buttons.addToCart}
           </button>
+          <Link href={'/collection'} className="button-secondary ml-4">
+            {msg.buttons.backToCollection}
+          </Link>
         </div>
       </div>
     </div>
-  )
-
+  );
 };
 
 export default Item;

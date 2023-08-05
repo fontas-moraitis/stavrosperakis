@@ -5,6 +5,7 @@
 @layer base {
 	html {
 		@apply antialiased;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	body {
@@ -35,6 +36,26 @@
 		background-position: top left;
 		animation: stream 2s ease infinite;
 	}
+
+	.button-main {
+		@apply text-sm border-neutral-900 hover:border-yellow-500 border-2 p-3 bg-neutral-900 hover:bg-yellow-500 text-neutral-50 hover:text-neutral-900 active:scale-95 disabled:bg-neutral-400 disabled:border-neutral-400 disabled:pointer-events-none;
+	}
+
+	.button-main--disabled {
+		@apply pointer-events-none border-neutral-400 bg-neutral-400;
+	}
+
+	.button-secondary {
+		@apply text-sm hover:border-yellow-500 border-neutral-900 border-2 p-3 active:scale-95;
+	}
+
+	.button-whatsapp {
+		@apply items-center p-3 text-sm font-medium text-center border-2 border-lime-400;
+	}
+
+	.pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 
 	@keyframes stream {
 		0% {

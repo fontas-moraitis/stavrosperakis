@@ -33,8 +33,8 @@ const Workshops = async () => {
       <h2 className='text-3xl md:text-5xl mx-4 md:col-span-2 text-center md:mb-8'>
         { msg.workshops.title }
       </h2>
-      <div className='grid gap-6 lg:gap-10 grid-cols-1 grid-rows-2 lg:grid-cols-2 lg:grid-rows-1 md:w-[80%] xl:w-[70%]'>
-        <div className='relative h-full image-bg'>
+      <div className='flex flex-col lg:flex-row gap-6 md:gap-10 mb-8 lg:h-[50vh] lg:w-[80vw] items-center justify-center px-3 sm:px-0'>
+        <div className='relative image-bg w-full lg:w-[420px] h-[420px] lg:h-[50vh] shrink-0'>
           <Image
             src={`https:${image}`}
             alt={msg.workshops.title}
@@ -44,16 +44,21 @@ const Workshops = async () => {
             style={{ objectFit: 'cover' }}
           />
         </div>
-        <div className='flex flex-col gap-2 justify-center px-8'>
-          <p className='text-2xl font-semibold'>
+        <div className='flex flex-col gap-2 justify-center max-w-[620px]'>
+          <p className='text-2xl font-medium'>
             { title }
           </p>
           <p className='text-neutral-800'>
             { description }
           </p>
-          <a href="tel:+306977086072" className='bg-neutral-800 rounded-md text-center mt-4 text-white p-2'>
-            { msg.buttons.workshopContact }
-          </a>
+          <div className='flex mt-4 gap-4'>
+            <a href="tel:+306977086072" className='button-main text-center'>
+              { msg.buttons.workshopContact }
+            </a>
+            <a href='https://api.whatsapp.com/send?phone=+306977086072&text=Hi Stavros, I am interested in the workshops' rel="noreferrer" target="_blank" className='button-whatsapp'>
+                {msg.buttons.whatsappArtist}
+            </a>
+          </div>
         </div>
       </div>
     </div>
