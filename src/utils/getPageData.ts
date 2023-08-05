@@ -1,10 +1,4 @@
 const getPageData = async (query: any) => {
-  console.log(process.env.NEXT_PUBLIC_VERCEL_ENV)
-  let baseUrl = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production' || process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview' ?
-   `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : 'http://localhost:3000';
-   
-  const fetchUrl = `${baseUrl}/api/pageData`;
-
   const fetchOptions = {
     method: "POST",
     headers: {
@@ -15,13 +9,13 @@ const getPageData = async (query: any) => {
   };
 
   try {
-    const data = await fetch(fetchUrl, fetchOptions).then((response) =>
+    const data = await fetch('/api/pageData', fetchOptions).then((response) =>
       response.json(),
     );
+
     return data;
   } catch (error) {
-    console.log('getPageData', error)
-    throw new Error("Could not fetch data!");
+    throw new Error("Could not fetch data!",);
   }
 };
 
