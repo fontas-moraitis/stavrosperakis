@@ -155,7 +155,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ setShowingForm, queryMsg }) =
           { msg.buttons.cancel }
         </button>
         <a 
-          href={`mailto:s_perakis@me.com?subject=${form.name} - inquiry&body=${form.message}`}
+          href={`mailto:stavrosperakis1@gmail.com?subject=${form.name} - inquiry&body=${form.message}`}
           className={`button-main align-self-end ${Object.values(errorFields).some(el => el.length) ? 'button-main--disabled' : ''}`}
         >
           { msg.buttons.sendEmail }
