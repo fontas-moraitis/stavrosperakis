@@ -77,7 +77,7 @@ const Store: React.FC = () => {
           { msg.cart.emptyCart }
         </div>
       }
-      <div className="mt-6 sm:mt-10 w-full flex items-center justify-end gap-4">
+      <div className={`mt-20 w-full flex items-center gap-4 ${cart.length ? 'justify-end' : 'justify-center'}`}>
         <button 
           className="button-main"
           disabled={!cart.length}

@@ -103,7 +103,7 @@ const Item = ({ params }: { params: { itemId: string } }) => {
         <p className="text-5xl sm:mb-4">{collectionItem?.prodTitle}</p>
         <p>{collectionItem?.prodDescription}</p>
         <div>
-          <p className="font-semibold text-lg mb-2">
+          <p className="font-medium text-lg mb-2">
             {msg.collectionItem.details}
           </p>
           <p>
