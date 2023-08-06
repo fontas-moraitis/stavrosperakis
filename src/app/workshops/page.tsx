@@ -33,7 +33,7 @@ const Workshops = async () => {
       <h2 className='text-3xl md:text-5xl mx-4 md:col-span-2 text-center md:mb-8'>
         { msg.workshops.title }
       </h2>
-      <div className='flex flex-col lg:flex-row gap-6 md:gap-10 mb-8 lg:h-[50vh] lg:w-[80vw] items-center justify-center px-3 sm:px-0'>
+      <div className='flex flex-col lg:flex-row gap-6 md:gap-10 mb-8 lg:h-[50vh] lg:w-[80vw] items-center justify-center px-3 md:px-0'>
         <div className='relative image-bg w-full lg:w-[420px] h-[420px] lg:h-[50vh] shrink-0'>
           <Image
             src={`https:${image}`}
@@ -44,7 +44,7 @@ const Workshops = async () => {
             style={{ objectFit: 'cover' }}
           />
         </div>
-        <div className='flex flex-col gap-2 justify-center max-w-[620px]'>
+        <div className='flex flex-col gap-2 justify-center sm:min-w-[600px]'>
           <p className='text-2xl font-medium'>
             { title }
           </p>
