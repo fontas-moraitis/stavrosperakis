@@ -1,15 +1,23 @@
 import callStoryblok from 'src/utils/storyblokApi';
 import { ImgGallery } from '@/components/index.js';
 import msg from '../locales/msg.json';
+import type { Viewport, Metadata } from 'next';
 
 type HomeContentImage = { _uid: string; image: string; title: string, subTitle: string };
 
-export const metadata = {
-  title: msg.metadata.title,
-  description: msg.metadata.description, 
-  keywords: 'pottery, sculpture, art, artist, Athens, Greece, Stavros Perakis',
-  viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
   themeColor: '#a3a3a3',
+}
+
+export const metadata: Metadata = {
+  title: msg.metadata.title,
+  description: msg.metadata.description,
   icons: {
     icon: '/sum.png',
   }
