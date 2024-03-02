@@ -3,6 +3,30 @@ import Link from 'next/link'
 import { CollectionItem } from 'src/types';
 import callStoryblok from "src/utils/storyblokApi";
 import msg from '../../locales/msg.json';
+import { Metadata, Viewport } from 'next';
+
+type ComposedItem = {
+  uid: string,
+  image: string,
+  title: string,
+  price: number,
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#f5f5f5',
+}
+
+export const metadata: Metadata = {
+  title: msg.metadata.title, 
+  description: msg.metadata.descriptionCollection, 
+  keywords: 'workshops, pottery, sculpture, art, artist, Athens, Greece, Stavros Perakis',
+  icons: {
+    icon: '/sum.png',
+  }
+};
 
 const query = `
   query {
@@ -13,24 +37,6 @@ const query = `
     }
   }
 `
-
-export const metadata = {
-  title: msg.metadata.title, 
-description: msg.metadata.descriptionCollection, 
-  keywords: 'workshops, pottery, sculpture, art, artist, Athens, Greece, Stavros Perakis',
-  viewport: 'width=device-width, initial-scale=1.0, viewport-fit=cover',
-  themeColor: '#f5f5f5',
-  icons: {
-    icon: '/sum.png',
-  }
-};
-
-type ComposedItem = {
-  uid: string,
-  image: string,
-  title: string,
-  price: number,
-}
 
 const Collection = async () => {
   const { data } = await callStoryblok(query);
